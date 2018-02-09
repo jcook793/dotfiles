@@ -30,6 +30,7 @@ cask "charles"
 cask "firefox"
 cask "cakebrew"
 cask "mp4tools"
+cask "discord"
 
 # Mac AppStore apps because MORE APPS
 mas "1Password", id: 443987910
