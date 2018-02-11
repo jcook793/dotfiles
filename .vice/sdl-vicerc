@@ -1,0 +1,17 @@
+[C64]
+MenuKey=293
+MenuKeyUp=273
+MenuKeyDown=274
+MenuKeyLeft=276
+MenuKeyRight=275
+SoundDeviceName="sdl"
+SoundBufferSize=100
+AspectRatio="1.000000"
+SDLWindowWidth=719
+SDLWindowHeight=544
+VICIIVideoCache=1
+VICIIFilter=0
+SidEngine=1
+SidModel=1
+Acia1Base=56832
+
