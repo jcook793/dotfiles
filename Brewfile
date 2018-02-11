@@ -15,6 +15,7 @@ brew "jq"
 brew "pwgen"
 brew "python3"
 brew "awscli"
+brew "vice"
 
 # Apps, gotta have apps man
 cask "google-chrome"

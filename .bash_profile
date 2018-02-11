@@ -5,14 +5,8 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
 
 # Prefer GNU utils over Apple's
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
-# Chromium depot tools, used for Pdfium hack week project
-export PATH=/Users/jcook/dotloop/hack-week-2017-03/depot_tools:"$PATH"
-
-# Curl
-export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 # Homebrew bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -38,18 +32,9 @@ eval `dircolors ~/.dir_colors`
 export TERM=xterm-256color
 alias ls="ls --color"
 
-# Ansible using cowsay is cute but quickly gets annoying
-export ANSIBLE_NOCOWS=1
-
 # Useful aliases that I like
 alias ll="ls -alsh --group-directories-first"
 
 # VICE C64 emulator because that's how I roll
-export PATH=/Applications/VICE/tools:$PATH
-
-# KickAssembler because 6510 all day erry day
-export CLASSPATH=/Users/jcook/kickassembler/KickAss.jar
-
-# The best way to start any terminal session
-# cowsay $(fortune -a) | lolcat
+export PATH=$(brew --prefix vice)/tools:$PATH
 
