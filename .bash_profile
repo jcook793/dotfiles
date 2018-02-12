@@ -1,5 +1,5 @@
-# Homebrew sbin
-export PATH="/usr/local/sbin:$PATH"
+# Homebrew bin & sbin
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # Homebrew Python bullshit
 export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
