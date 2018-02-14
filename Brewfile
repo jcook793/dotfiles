@@ -32,6 +32,7 @@ cask "firefox"
 cask "cakebrew"
 cask "mp4tools"
 cask "discord"
+cask "jetbrains-toolbox"
 
 # Mac AppStore apps because MORE APPS
 mas "1Password", id: 443987910
