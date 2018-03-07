@@ -44,7 +44,7 @@ setGlobalDefault() {
 # Symlinks from home to here
 #
 echo "Writing symlinks"
-writeSymlinks .bash_profile .dir_colors .gitconfig .vice .vimrc Brewfile
+writeSymlinks .bash_profile .dir_colors .gitconfig .jenv .vice .vimrc Brewfile
 
 
 #

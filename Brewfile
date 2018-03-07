@@ -46,4 +46,5 @@ mas "DaisyDisk", id: 411643860
 # Javaaahhhhhhh
 cask "java" unless system "/usr/libexec/java_home --failfast"
 brew "maven"
+brew "jenv"
 

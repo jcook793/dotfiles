@@ -4,6 +4,11 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 # Homebrew Python bullshit
 export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
 
+# Java version bullshit
+if which jenv > /dev/null; then
+  eval "$(jenv init -)";
+fi
+
 # Prefer GNU utils over Apple's
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
