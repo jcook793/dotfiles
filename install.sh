@@ -44,7 +44,7 @@ setGlobalDefault() {
 # Symlinks from home to here
 #
 echo "Writing symlinks"
-writeSymlinks .bash_profile .dir_colors .gitconfig .jenv .vice .vimrc Brewfile
+writeSymlinks .bash_profile .dir_colors .gitignore_global .jenv .vice .vimrc Brewfile
 
 
 #
@@ -65,5 +65,10 @@ setGlobalDefault WebAutomaticSpellingCorrectionEnabled int 0
 setGlobalDefault NSUserQuotesArray array '"\""' '"\""' '"'\''"' '"'\''"'
 setGlobalDefault com.apple.mouse.scaling float 1.5
 setGlobalDefault com.apple.trackpad.forceClick int 0
+
+#
+# Global .gitignore
+#
+git config --global core.excludesfile ~/.gitignore_global
 
 echo -e "\nDone."
