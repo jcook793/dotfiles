@@ -33,6 +33,8 @@ cask "cakebrew"
 cask "mp4tools"
 cask "discord"
 cask "jetbrains-toolbox"
+cask "versions"
+cask "caskroom/versions/java8"
 
 # Mac AppStore apps because MORE APPS
 mas "1Password", id: 443987910
@@ -44,7 +46,7 @@ mas "Pixelmator", id: 407963104
 mas "DaisyDisk", id: 411643860
 
 # Javaaahhhhhhh
-cask "java" unless system "/usr/libexec/java_home --failfast"
+cask "java"
 brew "maven"
 brew "jenv"
 

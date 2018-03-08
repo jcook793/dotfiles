@@ -12,4 +12,5 @@ cd .dotfiles
 ./install.sh
 ```
 
-Then install Homebrew, do a quick `brew bundle` and get to work.
+I've tried to make this installation idempotent, but no guarantees...
+

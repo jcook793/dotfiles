@@ -44,7 +44,7 @@ setGlobalDefault() {
 # Symlinks from home to here
 #
 echo "Writing symlinks"
-writeSymlinks .bash_profile .dir_colors .gitignore_global .jenv .vice .vimrc Brewfile
+writeSymlinks .bash_profile .dir_colors .gitignore_global .vice .vimrc Brewfile
 
 
 #
@@ -69,6 +69,29 @@ setGlobalDefault com.apple.trackpad.forceClick int 0
 #
 # Global .gitignore
 #
+echo "Creating global .gitignore"
 git config --global core.excludesfile ~/.gitignore_global
+
+#
+# Homebrew
+#
+echo -e "\nChecking for Homebrew"
+if which -s brew; then
+  echo "Homebrew already installed"
+else
+  echo "Installing Homebrew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  source ~/.bash_profile
+  echo -e "\nInstalling packages from Brewfile"
+  brew bundle
+fi
+
+#
+# Java versions
+#
+echo -e "\nAdding JDKs to jenv"
+for jdk in /Library/Java/JavaVirtualMachines/*; do
+  yes n | jenv add "${jdk}/Contents/Home"
+done
 
 echo -e "\nDone."

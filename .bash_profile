@@ -5,9 +5,8 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
 
 # Java version bullshit
-if which jenv > /dev/null; then
-  eval "$(jenv init -)";
-fi
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 # Prefer GNU utils over Apple's
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
