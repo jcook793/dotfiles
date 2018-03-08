@@ -69,7 +69,7 @@ setGlobalDefault com.apple.trackpad.forceClick int 0
 #
 # Global .gitignore
 #
-echo "Creating global .gitignore"
+echo -e "\nCreating global .gitignore"
 git config --global core.excludesfile ~/.gitignore_global
 
 #
