@@ -48,5 +48,6 @@ mas "DaisyDisk", id: 411643860
 # Javaaahhhhhhh
 cask "java"
 brew "maven"
+brew "gradle"
 brew "jenv"
 
