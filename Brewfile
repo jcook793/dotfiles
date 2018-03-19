@@ -8,6 +8,7 @@ tap "caskroom/drivers"
 
 # Command-line tools
 brew "coreutils"
+brew "wget"
 brew "git"
 brew "bash-completion"
 brew "vim"
