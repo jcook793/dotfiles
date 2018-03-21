@@ -36,6 +36,7 @@ cask "discord"
 cask "jetbrains-toolbox"
 cask "versions"
 cask "caskroom/versions/java8"
+cask "licecap"
 
 # Mac AppStore apps because MORE APPS
 mas "1Password", id: 443987910
