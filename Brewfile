@@ -37,6 +37,7 @@ cask "jetbrains-toolbox"
 cask "versions"
 cask "caskroom/versions/java8"
 cask "licecap"
+cask "hex-fiend"
 
 # Mac AppStore apps because MORE APPS
 mas "1Password", id: 443987910
