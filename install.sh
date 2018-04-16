@@ -67,6 +67,12 @@ setGlobalDefault com.apple.mouse.scaling float 1.5
 setGlobalDefault com.apple.trackpad.forceClick int 0
 
 #
+# ssh
+#
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+
+#
 # Global .gitignore
 #
 echo -e "\nCreating global .gitignore"
