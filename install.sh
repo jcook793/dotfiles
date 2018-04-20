@@ -4,12 +4,12 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
 #
-# Symlinks a list of files from the dotfiles directory to ~
+# Symlinks a list of files from the dotfiles directory to $HOME
 #
 writeSymlinks() {
 	for filename in "$@"; do
 		echo -n "  "
-		ln -sfv "${DOTFILES_DIR}/${filename}" ~
+		ln -sfv "${DOTFILES_DIR}/${filename}" "${HOME}"
 	done
 }
 
@@ -41,14 +41,21 @@ setGlobalDefault() {
 
 
 #
-# Symlinks from home to here
+# Symlinks
 #
 echo "Writing symlinks"
 writeSymlinks .bash_profile .dir_colors .gitignore_global .vice .vimrc Brewfile
 
+if [ -d "${HOME}/Library/Application Support/Sublime Text 3/Packages/User" ]; then
+    echo "Found Sublime Text 3 user folder, not overwriting"
+else
+    mkdir -p "${HOME}/Library/Application Support/Sublime Text 3/Packages"
+    ln -sfv "$(pwd)/sublime/" "${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
+fi
+
 
 #
-# Some preferences
+# Some OS preferences
 #
 echo -e "\nSetting macOS NSGlobalDomain values"
 setGlobalDefault AppleEnableSwipeNavigateWithScrolls int 0
@@ -69,14 +76,14 @@ setGlobalDefault com.apple.trackpad.forceClick int 0
 #
 # ssh
 #
-mkdir -p ~/.ssh
-chmod 700 ~/.ssh
+mkdir -p "${HOME}/.ssh"
+chmod 700 "${HOME}/.ssh"
 
 #
 # Global .gitignore
 #
 echo -e "\nCreating global .gitignore"
-git config --global core.excludesfile ~/.gitignore_global
+git config --global core.excludesfile "${HOME}/.gitignore_global"
 
 #
 # Homebrew
@@ -87,7 +94,7 @@ if which -s brew; then
 else
   echo "Installing Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  source ~/.bash_profile
+  source "${HOME}/.bash_profile"
   echo -e "\nInstalling packages from Brewfile"
   brew bundle
 fi

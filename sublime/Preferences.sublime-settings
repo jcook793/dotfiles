@@ -1,0 +1,14 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+    "translate_tabs_to_spaces": true,
+    "highlight_line": true,
+
+    // Valid values are "smooth", "phase", "blink" and "solid".
+    "caret_style": "phase",
+    "caret_extra_top": 2,
+    "caret_extra_bottom": 2,
+    "caret_extra_width": 1,
+
+    "indent_guide_options": ["draw_normal", "draw_active"]
+}
