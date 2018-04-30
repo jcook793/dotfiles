@@ -27,6 +27,8 @@ fi
 
 if [ -f /usr/local/share/gitprompt.sh ]; then
   GIT_PROMPT_THEME=Default
+  GIT_PROMPT_FETCH_REMOTE_STATUS=0
+  GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0
   . /usr/local/share/gitprompt.sh
 fi
 
