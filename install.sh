@@ -74,6 +74,12 @@ setGlobalDefault com.apple.mouse.scaling float 1.5
 setGlobalDefault com.apple.trackpad.forceClick int 0
 
 #
+# Power management stuff
+#
+# Don't sleep when hooked to a charger
+sudo pmset -c sleep 0
+
+#
 # ssh
 #
 mkdir -p "${HOME}/.ssh"
