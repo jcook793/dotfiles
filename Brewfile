@@ -8,16 +8,21 @@ tap "caskroom/drivers"
 
 # Command-line tools
 brew "coreutils"
+brew "telnet"
 brew "wget"
 brew "git"
 brew "bash-completion"
 brew "vim"
 brew "jq"
 brew "pwgen"
+brew "python@2"
 brew "python3"
 brew "awscli"
 brew "vice"
 brew "bash-git-prompt"
+brew "npm"
+brew "yarn"
+brew "nvm"
 
 # Apps, gotta have apps man
 cask "google-chrome"
