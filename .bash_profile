@@ -15,6 +15,9 @@ eval "$(jenv init -)"
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
+# MySQL client bullshit
+export PATH="$(brew --prefix mysql-client)/bin:$PATH"
+
 # Homebrew bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 	. $(brew --prefix)/etc/bash_completion

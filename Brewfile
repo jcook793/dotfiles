@@ -23,6 +23,7 @@ brew "bash-git-prompt"
 brew "npm"
 brew "yarn"
 brew "nvm"
+brew "mysql-client"
 
 # Apps, gotta have apps man
 cask "google-chrome"
