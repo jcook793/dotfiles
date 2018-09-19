@@ -3,6 +3,9 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # Homebrew Python bullshit
 export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
+export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+. /usr/local/bin/virtualenvwrapper.sh
 
 # Java version bullshit
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -41,6 +44,6 @@ alias ls="ls --color"
 # Useful aliases that I like
 alias ll="ls -alsh --group-directories-first"
 
-# VICE C64 emulator because that's how I roll
-export PATH=$(brew --prefix vice)/tools:$PATH
-
+# VICE and KickAssembler because that's how I roll
+export PATH=/Applications/VICE/tools:$PATH
+export CLASSPATH=/Applications/KickAssembler/KickAss.jar
