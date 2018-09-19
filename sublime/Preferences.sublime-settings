@@ -13,5 +13,6 @@
 		"draw_normal",
 		"draw_active"
 	],
-	"translate_tabs_to_spaces": true
+	"translate_tabs_to_spaces": true,
+  "show_full_path": true
 }
