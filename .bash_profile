@@ -4,7 +4,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 # Homebrew Python/virtualenv bullshit
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
 export PIP_RESPECT_VIRTUALENV=true
 source /usr/local/bin/virtualenvwrapper.sh
 

@@ -44,7 +44,7 @@ setGlobalDefault() {
 # Symlinks
 #
 echo "Writing symlinks"
-writeSymlinks .bash_profile .dir_colors .gitignore_global .vice .vimrc Brewfile
+writeSymlinks .bash_profile .dir_colors .gitignore_global .vimrc Brewfile
 
 if [ -d "${HOME}/Library/Application Support/Sublime Text 3/Packages/User" ]; then
     echo "Found Sublime Text 3 user folder, not overwriting"
@@ -104,13 +104,5 @@ else
   echo -e "\nInstalling packages from Brewfile"
   brew bundle
 fi
-
-#
-# Java versions
-#
-echo -e "\nAdding JDKs to jenv"
-for jdk in /Library/Java/JavaVirtualMachines/*; do
-  yes n | jenv add "${jdk}/Contents/Home"
-done
 
 echo -e "\nDone."
