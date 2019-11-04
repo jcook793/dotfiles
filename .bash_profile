@@ -40,3 +40,6 @@ alias ll="ls -alsh --group-directories-first"
 export PATH=/Applications/VICE/tools:$PATH
 export CLASSPATH=/Applications/KickAssembler/KickAss.jar
 
+# Apple, sometimes... <shakes head>, *sigh*... nevermind
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
