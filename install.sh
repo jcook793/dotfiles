@@ -17,6 +17,7 @@ symlink() {
 #
 echo "Writing symlinks"
 symlink .zshrc "${HOME}"
+symlink .zshrc-dircolors.config "${HOME}"
 symlink .gitignore_global "${HOME}"
 symlink .vimrc "${HOME}"
 symlink Brewfile "${HOME}"
