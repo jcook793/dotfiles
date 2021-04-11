@@ -4,91 +4,53 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
 #
-# Symlinks a list of files from the dotfiles directory to $HOME
+# Symlink utility function
 #
-writeSymlinks() {
-	for filename in "$@"; do
-		echo -n "  "
-		ln -sfv "${DOTFILES_DIR}/${filename}" "${HOME}"
-	done
-}
-
-#
-# Sets an NSGlobalDomain value with some feedback
-#   $1 = the key you are setting
-#   $2 = the type (int, bool, etc.)
-#   $3 = the value (you can provide more values for arrays)
-#
-setGlobalDefault() {
-	key=${1}
-	keyType=${2}
-	value=${@:3}
-
-	if [ "${keyType}" == "array" ]; then  # I am punting on arrays
-		echo "  Setting ${key} to ${value}"
-		defaults write NSGlobalDomain ${key} -${keyType} ${value}
-	else
-		currvalue=$(defaults read NSGlobalDomain ${1})
-
-		if [ "${currvalue}" == "${value}" ]; then
-			echo "  ${key} is already ${currvalue}, not changing"
-		else
-			echo "  Changing ${key} from ${currvalue} to ${value}"
-			defaults write NSGlobalDomain ${key} -${keyType} ${value}
-		fi
-	fi
+symlink() {
+    echo -n "  "
+    ln -sfv "${DOTFILES_DIR}/${1}" "${2}"
 }
 
 
 #
-# Symlinks
+# Simple symlinks
 #
 echo "Writing symlinks"
-writeSymlinks .bash_profile .dir_colors .gitignore_global .vimrc Brewfile
+symlink .zshrc "${HOME}"
+symlink .zsh-dircolors.config "${HOME}"
+symlink .gitignore_global "${HOME}"
+symlink .vimrc "${HOME}"
+symlink Brewfile "${HOME}"
 
-if [ -d "${HOME}/Library/Application Support/Sublime Text 3/Packages/User" ]; then
-    echo "Found Sublime Text 3 user folder, not overwriting"
-else
-    mkdir -p "${HOME}/Library/Application Support/Sublime Text 3/Packages"
-    ln -sfv "$(pwd)/sublime/" "${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
+#
+# Sublime Text configs
+#
+SUBLIME_TEXT_PACKAGES_FOLDER="${HOME}/Library/Application Support/Sublime Text 3/Packages"
+SUBLIME_TEXT_USER_PACKAGES_FOLDER="${SUBLIME_TEXT_PACKAGES_FOLDER}/User"
+if [ -d "${SUBLIME_TEXT_PACKAGES_FOLDER}/User" ]; then
+    NOW=`date "+%Y%m%d-%H%M%S"`
+    ARCHIVE_FOLDER="${SUBLIME_TEXT_USER_PACKAGES_FOLDER}-${NOW}"
+    echo "  Found existing Sublime Text 3 user folder in ${SUBLIME_TEXT_USER_PACKAGES_FOLDER}, archiving it as ${ARCHIVE_FOLDER}"
+    mv "${SUBLIME_TEXT_USER_PACKAGES_FOLDER}" "${ARCHIVE_FOLDER}"
 fi
-
-
-#
-# Some OS preferences
-#
-echo -e "\nSetting macOS NSGlobalDomain values"
-setGlobalDefault AppleEnableSwipeNavigateWithScrolls int 0
-setGlobalDefault AppleInterfaceStyle string Dark
-setGlobalDefault InitialKeyRepeat int 25
-setGlobalDefault KeyRepeat int 2
-setGlobalDefault NSAutomaticCapitalizationEnabled int 0
-setGlobalDefault NSAutomaticDashSubstitutionEnabled int 0
-setGlobalDefault NSAutomaticPeriodSubstitutionEnabled int 0
-setGlobalDefault NSAutomaticQuoteSubstitutionEnabled int 0
-setGlobalDefault NSAutomaticSpellingCorrectionEnabled int 0
-setGlobalDefault NSAutomaticTextCompletionEnabled int 0
-setGlobalDefault WebAutomaticSpellingCorrectionEnabled int 0
-setGlobalDefault NSUserQuotesArray array '"\""' '"\""' '"'\''"' '"'\''"'
-setGlobalDefault com.apple.mouse.scaling float 1.5
-setGlobalDefault com.apple.trackpad.forceClick int 0
+mkdir -p "${SUBLIME_TEXT_PACKAGES_FOLDER}"
+symlink sublime "${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
 
 #
-# Power management stuff
+# Oh My Zsh theme (cobalt2)
 #
-# Don't sleep when hooked to a charger
-sudo pmset -c sleep 0
-
-#
-# ssh
-#
-mkdir -p "${HOME}/.ssh"
-chmod 700 "${HOME}/.ssh"
+OH_MY_ZSH_THEMES_FOLDER="${HOME}/.oh-my-zsh/themes"
+if [ -d "${OH_MY_ZSH_THEMES_FOLDER}" ]; then
+    symlink oh-my-zsh/themes/cobalt2.zsh-theme "${OH_MY_ZSH_THEMES_FOLDER}"
+else
+    echo "  Could not find ${OH_MY_ZSH_THEMES_FOLDER} - is Oh My Zsh installed?"
+    echo "    ^-- this might be a problem, you probably want to install Oh My Zsh and run this script again"
+fi
 
 #
 # Global .gitignore
 #
-echo -e "\nCreating global .gitignore"
+echo -e "\nUpdating git config for global .gitignore"
 git config --global core.excludesfile "${HOME}/.gitignore_global"
 
 #
@@ -96,13 +58,10 @@ git config --global core.excludesfile "${HOME}/.gitignore_global"
 #
 echo -e "\nChecking for Homebrew"
 if which -s brew; then
-  echo "Homebrew already installed"
-else
-  echo "Installing Homebrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  source "${HOME}/.bash_profile"
-  echo -e "\nInstalling packages from Brewfile"
+  echo "Homebrew installed, installing packages from Brewfile"
   brew bundle
+else
+  echo "Homebrew not installed yet! Go install Homebrew and run this script again."
 fi
 
 echo -e "\nDone."
