@@ -26,13 +26,15 @@ symlink Brewfile "${HOME}"
 # Sublime Text configs
 #
 SUBLIME_TEXT_PACKAGES_FOLDER="${HOME}/Library/Application Support/Sublime Text 3/Packages"
+SUBLIME_TEXT_USER_PACKAGES_FOLDER="${SUBLIME_TEXT_PACKAGES_FOLDER}/User"
 if [ -d "${SUBLIME_TEXT_PACKAGES_FOLDER}/User" ]; then
-    echo "  Found existing Sublime Text 3 user folder in ${SUBLIME_TEXT_PACKAGES_FOLDER}"
-    echo "    ^-- this might be a problem, you probably want to remove it and run this script again"
-else
-    mkdir -p "${SUBLIME_TEXT_PACKAGES_FOLDER}"
-    symlink sublime "${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
+    NOW=`date "+%Y%m%d-%H%M%S"`
+    ARCHIVE_FOLDER="${SUBLIME_TEXT_USER_PACKAGES_FOLDER}-${NOW}"
+    echo "  Found existing Sublime Text 3 user folder in ${SUBLIME_TEXT_USER_PACKAGES_FOLDER}, archiving it as ${ARCHIVE_FOLDER}"
+    mv "${SUBLIME_TEXT_USER_PACKAGES_FOLDER}" "${ARCHIVE_FOLDER}"
 fi
+mkdir -p "${SUBLIME_TEXT_PACKAGES_FOLDER}"
+symlink sublime "${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
 
 #
 # Oh My Zsh theme (cobalt2)
