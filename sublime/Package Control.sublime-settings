@@ -5,10 +5,11 @@
 	],
 	"installed_packages":
 	[
+		"CForm",
 		"CoolFormat",
 		"HTML-CSS-JS Prettify",
 		"Kick Assembler (C64)",
 		"MarkdownPreview",
-		"Package Control"
+		"Package Control",
 	]
 }

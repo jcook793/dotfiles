@@ -7,7 +7,7 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"indent_guide_options":
 	[
@@ -15,5 +15,11 @@
 		"draw_active"
 	],
 	"show_full_path": true,
-	"translate_tabs_to_spaces": true
+	"translate_tabs_to_spaces": true,
+	"kickass_run_path": "xvic",
+	"kickass_debug_path": "xvic",
+	"theme": "auto",
+	"rulers": [120],
+	"trim_trailing_white_space_on_save": true,
+	"color_scheme": "Mariana.sublime-color-scheme",
 }
