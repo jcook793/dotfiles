@@ -1,13 +1,13 @@
 # Homebrew bin & sbin
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/sbin:/usr/local/bin:$PATH"
 
 # Homebrew Python
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 
 # Homebrew - prefer GNU utils over Apple's
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # Vice for retro development
 export PATH="/Applications/Vice/bin:$PATH"
@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose zsh-dircolors-solarized)
+plugins=(git docker docker-compose zsh-dircolors-solarized zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
