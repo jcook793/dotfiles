@@ -8,11 +8,12 @@ brew "vim"
 brew "jq"
 brew "awscli"
 brew "wget"
-#brew "archey" # This is obsolete, but I love it
+brew "fastfetch"
 brew "telnet"
 brew "findutils"
 brew "zsh-autocomplete"
+brew "zsh-autosuggest"
 
 # Arduino/EPROM shit
-brew "dfu-programmer"
-brew "minipro"
+# brew "dfu-programmer"
+# brew "minipro"

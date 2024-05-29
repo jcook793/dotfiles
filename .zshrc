@@ -1,5 +1,5 @@
 # Homebrew bin & sbin
-export PATH="/opt/homebrew/sbin:/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:$PATH"
 
 # Homebrew Python
 export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
@@ -27,17 +27,21 @@ ZSH_THEME="cobalt2"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
+# zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose zsh-dircolors-solarized zsh-autosuggestions)
+plugins=(git docker docker-compose zsh-dircolors-solarized)
 
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias ll="ls -Alshp --group-directories-first --color"
 
-# Show a nice archey screen - use "--ofline" if you're stuck with some OpenDNS BS
-archey
+# Show a nice archey-esque screen
+echo
+fastfetch
